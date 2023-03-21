@@ -51,6 +51,15 @@
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
 
+          var allergiesTable = "<table>";
+          for (var i=0; i<allergies.length; i++) {
+            allergiesTable += "div" + allergies[i].code.text + "</div>";
+          }
+          if (allergies.length === 0) {
+            allergiesTable += "<tr><td>No allergies documented</td></tr>";
+          }
+          allergiesTable += "</table>";
+          
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           p.gender = gender;
@@ -92,6 +101,7 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
+      allergiesTable: {value: ''},
     };
   }
 
@@ -135,6 +145,7 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
+    $('#allergiesTable').html(p.allergiesTable);
   };
 
 })(window);
